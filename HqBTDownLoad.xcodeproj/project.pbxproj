@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152A054721548F8B00DE426B /* HqFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 152A054621548F8B00DE426B /* HqFileManager.m */; };
+		152A054F2154952A00DE426B /* HqAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 152A054D2154952A00DE426B /* HqAlertView.m */; };
+		1595E0ED21535D0700FD1AFC /* HqDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1595E0EC21535D0700FD1AFC /* HqDownloadManager.m */; };
+		1595E0F02153684900FD1AFC /* HqFileListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1595E0EF2153684900FD1AFC /* HqFileListVC.m */; };
 		3333400B214E45640034AE92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3333400A214E45640034AE92 /* AppDelegate.m */; };
 		3333400E214E45640034AE92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3333400D214E45640034AE92 /* ViewController.m */; };
 		33334011214E45640034AE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3333400F214E45640034AE92 /* Main.storyboard */; };
@@ -16,6 +20,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		152A054521548F8B00DE426B /* HqFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqFileManager.h; sourceTree = "<group>"; };
+		152A054621548F8B00DE426B /* HqFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqFileManager.m; sourceTree = "<group>"; };
+		152A054D2154952A00DE426B /* HqAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HqAlertView.m; sourceTree = "<group>"; };
+		152A054E2154952A00DE426B /* HqAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HqAlertView.h; sourceTree = "<group>"; };
+		1595E0EB21535D0700FD1AFC /* HqDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqDownloadManager.h; sourceTree = "<group>"; };
+		1595E0EC21535D0700FD1AFC /* HqDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqDownloadManager.m; sourceTree = "<group>"; };
+		1595E0EE2153684900FD1AFC /* HqFileListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqFileListVC.h; sourceTree = "<group>"; };
+		1595E0EF2153684900FD1AFC /* HqFileListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqFileListVC.m; sourceTree = "<group>"; };
 		33334006214E45640034AE92 /* HqBTDownLoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HqBTDownLoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33334009214E45640034AE92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3333400A214E45640034AE92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -39,6 +51,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		152A053B2154839F00DE426B /* HqFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				152A054521548F8B00DE426B /* HqFileManager.h */,
+				152A054621548F8B00DE426B /* HqFileManager.m */,
+			);
+			path = HqFileManager;
+			sourceTree = "<group>";
+		};
+		152A054C2154952A00DE426B /* HqAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				152A054D2154952A00DE426B /* HqAlertView.m */,
+				152A054E2154952A00DE426B /* HqAlertView.h */,
+			);
+			path = HqAlertView;
+			sourceTree = "<group>";
+		};
+		1595E0EA21535CEB00FD1AFC /* HqDownload */ = {
+			isa = PBXGroup;
+			children = (
+				1595E0EB21535D0700FD1AFC /* HqDownloadManager.h */,
+				1595E0EC21535D0700FD1AFC /* HqDownloadManager.m */,
+			);
+			path = HqDownload;
+			sourceTree = "<group>";
+		};
 		33333FFD214E45640034AE92 = {
 			isa = PBXGroup;
 			children = (
@@ -58,10 +97,15 @@
 		33334008214E45640034AE92 /* HqBTDownLoad */ = {
 			isa = PBXGroup;
 			children = (
+				152A054C2154952A00DE426B /* HqAlertView */,
+				152A053B2154839F00DE426B /* HqFileManager */,
 				33334009214E45640034AE92 /* AppDelegate.h */,
 				3333400A214E45640034AE92 /* AppDelegate.m */,
 				3333400C214E45640034AE92 /* ViewController.h */,
 				3333400D214E45640034AE92 /* ViewController.m */,
+				1595E0EE2153684900FD1AFC /* HqFileListVC.h */,
+				1595E0EF2153684900FD1AFC /* HqFileListVC.m */,
+				1595E0EA21535CEB00FD1AFC /* HqDownload */,
 				3333400F214E45640034AE92 /* Main.storyboard */,
 				33334012214E45650034AE92 /* Assets.xcassets */,
 				33334014214E45650034AE92 /* LaunchScreen.storyboard */,
@@ -141,9 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				152A054721548F8B00DE426B /* HqFileManager.m in Sources */,
 				3333400E214E45640034AE92 /* ViewController.m in Sources */,
 				33334019214E45650034AE92 /* main.m in Sources */,
+				152A054F2154952A00DE426B /* HqAlertView.m in Sources */,
+				1595E0ED21535D0700FD1AFC /* HqDownloadManager.m in Sources */,
 				3333400B214E45640034AE92 /* AppDelegate.m in Sources */,
+				1595E0F02153684900FD1AFC /* HqFileListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +332,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7V926B465U;
 				INFOPLIST_FILE = HqBTDownLoad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +350,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7V926B465U;
 				INFOPLIST_FILE = HqBTDownLoad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
