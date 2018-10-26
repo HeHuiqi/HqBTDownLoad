@@ -35,7 +35,7 @@
             [simpleFiles addObject:file];
         }
     }
-    NSLog(@"files == %@",files);
+//    NSLog(@"files == %@",files);
     return simpleFiles;
 }
 

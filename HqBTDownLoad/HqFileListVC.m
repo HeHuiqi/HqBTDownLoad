@@ -82,14 +82,14 @@
         UIContextualAction *del = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"删除" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
 
             [self showDeleteFileIndexPath:indexPath];
-            completionHandler(YES);
+            completionHandler(NO);
         }];
         
         UIContextualAction *rename = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"重命名" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             
             [self showRenameViewIndexPath:indexPath];
 
-            completionHandler(YES);
+            completionHandler(NO);
             
         }];
       
@@ -153,7 +153,7 @@
     UIAlertAction *a2  =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         UITextField *tf = [alert.textFields firstObject];
-        if (![tf.text isEqualToString: filename]) {
+        if (![tf.text isEqualToString: filename]&&tf.text.length>0) {
               BOOL suc = [HqFileManager hqRenameFileWithPath:filename newPath:tf.text];
             if (suc) {
                    NSString *ext = [[filename componentsSeparatedByString:@"."] lastObject];

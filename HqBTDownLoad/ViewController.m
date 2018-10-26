@@ -22,11 +22,21 @@
 @property (nonatomic,strong) NSString *localDir;
 @property (nonatomic,strong) UILabel *fileNameLab;
 
+@property (nonatomic,strong) UIDocumentInteractionController *docVC;
+@property (nonatomic,copy) NSURL *currentFileURL;
+
 
 @end
 
 @implementation ViewController
 
+- (UIDocumentInteractionController *)docVC{
+    if (!_docVC) {
+        _docVC = [[UIDocumentInteractionController alloc] init];
+        _docVC.URL = self.currentFileURL;
+    }
+    return _docVC;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Download";
@@ -63,8 +73,10 @@
     [leftBtn addTarget:self action:@selector(showPlay:) forControlEvents:UIControlEventTouchUpInside];
      UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = left;
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"我的文件" style:UIBarButtonItemStylePlain target:self action:@selector(enterMyFile)];
-    self.navigationItem.rightBarButtonItem = right;
+    
+    UIBarButtonItem *file = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemOrganize) target:self action:@selector(enterMyFile)];
+    UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemAction) target:self action:@selector(share)];
+    self.navigationItem.rightBarButtonItems = @[file,share];
 }
 - (void)showPlay:(UIButton *)btn{
     btn.selected = !btn.selected;
@@ -75,6 +87,11 @@
     HqFileListVC *fileList = [[HqFileListVC alloc] init];
     fileList.delegate = self;
     [self.navigationController pushViewController:fileList animated:YES];
+}
+- (void)share{
+    if (self.currentFileURL) {
+        [self.docVC presentOpenInMenuFromRect:self.view.bounds inView:self.view animated:YES];
+    }
 }
 - (UITextField *)sourceTf{
     if (!_sourceTf) {
@@ -122,8 +139,9 @@
 - (void)dowloadSource:(UIButton *)btn{
     NSString *url = self.sourceTf.text;
     if (self.sourceTf.text.length == 0) {
-//        url = @"https://file.wtfjj.com/videosmp4.php?vid=35310739/0.mp4";
-        url = @"https://f.us.sinaimg.cn/002Cl5mklx07nLONuULu01040200rsE00k010.mp4?label=mp4_720p&template=720x1280.26&Expires=1537506035&ssig=kU2yfRYnw%2F&KID=unistore,video";
+        url = @"https://file.wtfjj.com/videosmp4.php?vid=35310739/0.mp4";
+//        url = @"https://static.cobowallet.cn/_next/static/images/iphone_1_1_v2_zh-15bb37445f0caddeba87ab818d50eca7.png";
+//        url = @"https://gslb.miaopai.com/stream/RAi4IFHKGhOEwtb7u3mneNTChYbBwG92.mp4";
     }
     [HqDownloadManager startDownloadWithURLString:url];
 }
@@ -134,6 +152,7 @@
 #pragma mark - HqFileListVCDelegate
 - (void)HqFileListVC:(HqFileListVC *)vc palyUrl:(NSString *)url filename:(NSString *)filename{
     NSURL *localUrl = [NSURL fileURLWithPath:url];
+    self.currentFileURL = localUrl;
     [self.webView loadRequest:[NSURLRequest requestWithURL:localUrl]];
     self.title = filename;
     self.fileNameLab.text = filename;
