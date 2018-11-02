@@ -12,7 +12,7 @@
 #import "HqAlertView.h"
 @interface HqFileListVC ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong) NSFileManager *fm;
+@property (nonatomic,strong) HqFileManager *fm;
 @property (nonatomic,strong) NSMutableArray *files;
 @property (nonatomic,strong) NSString *localDir;
 @property (nonatomic,strong) UITableView *tableView;
@@ -23,13 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的文件";
-    self.fm = [NSFileManager defaultManager];
+    self.fm = [HqFileManager shareInstance];
+    [self.fm fileDefaultDir];
     [self.view addSubview:self.tableView];
     
 }
 - (NSMutableArray *)files{
     if (!_files) {
-        NSArray *simpleFiles = [HqFileManager hqDocumentFiles];
+        NSArray *simpleFiles = [self.fm hqDocumentFiles];
         self.localDir = [HqFileManager shareInstance].localDir;
         _files = [[NSMutableArray alloc] initWithArray:simpleFiles];
     }
@@ -133,7 +134,8 @@
     [alert showVC:self.navigationController callBack:^(UIAlertAction *action, int index) {
         if (index==1) {
             NSString *fileName = self.files[indexPath.row];
-            BOOL suc = [HqFileManager hqDelateFileWithPath:fileName];
+            NSString *fullPath = [self.fm.localDir stringByAppendingPathComponent:fileName];
+            BOOL suc = [self.fm  hqDelateFileWithPath:fullPath];
             if (suc) {
                
                 [self.files removeObjectAtIndex:indexPath.row];
@@ -154,7 +156,9 @@
         
         UITextField *tf = [alert.textFields firstObject];
         if (![tf.text isEqualToString: filename]&&tf.text.length>0) {
-              BOOL suc = [HqFileManager hqRenameFileWithPath:filename newPath:tf.text];
+            NSString *fullPath = [self.fm.localDir stringByAppendingPathComponent:filename];
+            
+            BOOL suc = [self.fm  hqRenameFileWithPath:fullPath newPath:tf.text];
             if (suc) {
                    NSString *ext = [[filename componentsSeparatedByString:@"."] lastObject];
                 NSString *newName = tf.text;

@@ -14,10 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString *localDir;
 + (instancetype)shareInstance;
-+ (NSArray *)hqDocumentFiles;
-+ (NSArray *)hqListFilesWithDir:(NSString *)dir;
-+ (BOOL)hqDelateFileWithPath:(NSString *)path;
-+ (BOOL)hqRenameFileWithPath:(NSString *)path newPath:(NSString *)newPath;
+
+- (NSString *)fileDefaultDir;
+- (BOOL)fileExistsAtPath:(NSString *)path;
+- (NSArray *)hqDocumentFiles;
+- (NSArray *)hqListFilesWithDir:(NSString *)dir;
+- (BOOL)hqDelateFileWithPath:(NSString *)path;
+- (BOOL)hqRenameFileWithPath:(NSString *)path newPath:(NSString *)newPath;
 
 @end
 
