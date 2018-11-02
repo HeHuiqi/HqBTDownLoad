@@ -21,8 +21,6 @@
 @property (nonatomic,strong) UIProgressView *progressView;
 @property (nonatomic,strong) UITextField *sourceTf;
 
-@property (nonatomic,strong) NSArray *files;
-@property (nonatomic,strong) NSString *localDir;
 @property (nonatomic,strong) UILabel *fileNameLab;
 
 @property (nonatomic,strong) UIDocumentInteractionController *docVC;

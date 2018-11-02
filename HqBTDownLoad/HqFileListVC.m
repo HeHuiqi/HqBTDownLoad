@@ -14,7 +14,6 @@
 
 @property (nonatomic,strong) HqFileManager *fm;
 @property (nonatomic,strong) NSMutableArray *files;
-@property (nonatomic,strong) NSString *localDir;
 @property (nonatomic,strong) UITableView *tableView;
 
 @end
@@ -31,7 +30,6 @@
 - (NSMutableArray *)files{
     if (!_files) {
         NSArray *simpleFiles = [self.fm hqDocumentFiles];
-        self.localDir = [HqFileManager shareInstance].localDir;
         _files = [[NSMutableArray alloc] initWithArray:simpleFiles];
     }
     return _files;
@@ -65,7 +63,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *fileName = self.files[indexPath.row];
-    NSString *filepath = [self.localDir stringByAppendingPathComponent:fileName];
+    NSString *filepath = [self.fm.localDir stringByAppendingPathComponent:fileName];
     
     if ([self.fm fileExistsAtPath:filepath]) {
         if (self.delegate) {
